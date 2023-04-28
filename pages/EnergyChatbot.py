@@ -47,8 +47,8 @@ texts = text_splitter.split_text(raw_text)
 docsearch = FAISS.from_texts(texts, embeddings)
 chain = load_qa_chain(OpenAI(model_name="gpt-3.5-turbo"), chain_type="stuff")
 
-st.markdown("<h1 style='text-align: center; color: black; font-weight: bold;'>Energy Chatbot</h1>", unsafe_allow_html=True)
-st.markdown("<h4 style='text-align: left; color: black; font-style: italic;'>Interact with our chatbot to find out about how you can save more energy in your day to day life and more!</h4>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: red; font-weight: bold;'>Energy Chatbot</h1>", unsafe_allow_html=True)
+st.markdown("<h4 style='text-align: left; color: red; font-style: italic;'>Interact with our chatbot to find out about how you can save more energy in your day to day life and more!</h4>", unsafe_allow_html=True)
 
 
 
