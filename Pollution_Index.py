@@ -5,7 +5,7 @@ from PIL import Image
 from langchain.llms import OpenAI
 from langchain.agents import create_csv_agent
 from langchain import PromptTemplate
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "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"
 llm = OpenAI(model_name="gpt-3.5-turbo")
 st.markdown("<h1 style='text-align: center; color: red;'>How safe is your city?</h1>", unsafe_allow_html=True)
 hide_default_format = """
