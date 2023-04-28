@@ -1,12 +1,15 @@
 import os
 import streamlit as st
 from PIL import Image
+from langchain.llms import Cohere
 
 from langchain.llms import OpenAI
 from langchain.agents import create_csv_agent
 from langchain import PromptTemplate
-os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+os.environ["OPENAI_API_KEY"] = st.secrets['OPEN_API_KEY']
 llm = OpenAI(model_name="gpt-3.5-turbo")
+COHERE_API_KEY = "5oLCAMpFcKifdONaAsTwCC2OO5laRKjIvzb62ftR"
+cohere = Cohere(cohere_api_key = COHERE_API_KEY ,model="command-xlarge-nightly")
 st.markdown("<h1 style='text-align: center; color: red;'>How safe is your city?</h1>", unsafe_allow_html=True)
 hide_default_format = """
        <style>
@@ -19,6 +22,8 @@ City = st.text_input(label="Enter your city.")
 Age = st.text_input(label="Enter your age.")
 Medical = st.text_input(label="Enter any medical condition you have.")
 p = 0
+temp_options = ['OpenAI','Cohere']
+temp = st.sidebar.select_slider("Choose which LLM that you want to utilize.", options=temp_options)
 if len(City) != 0 and len(Age)!=0 and len(Medical)!= 0:
     template ="How is the air quality in {A}"
     prompt_template = PromptTemplate(
@@ -72,6 +77,9 @@ if len(City) != 0 and len(Age)!=0 and len(Medical)!= 0:
         template=template1
     )
     st.markdown("<br>", unsafe_allow_html=True)
-    st.write(llm(prompt_template.format(a=p, b = Age, c= Medical)))
+    if temp == 'OpenAI':
+        st.write(llm(prompt_template.format(a=p, b = Age, c= Medical)))
+    else:
+        st.write(cohere(prompt_template.format(a=p, b = Age, c= Medical)))
     image = Image.open('Screenshot 2023-04-28 110507.png')
     st.image(image)
