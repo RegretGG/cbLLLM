@@ -1,0 +1,6 @@
+langchain==0.0.152
+Pillow==9.5.0
+Pillow==9.5.0
+PyPDF2==3.0.1
+streamlit==1.22.0
+streamlit_chat==0.0.2.2
