@@ -6,7 +6,7 @@ from langchain.llms import Cohere
 from langchain.llms import OpenAI
 from langchain.agents import create_csv_agent
 from langchain import PromptTemplate
-os.environ["OPENAI_API_KEY"] = st.secrets['OPEN_API_KEY']
+os.environ["OPENAI_API_KEY"] = st.secrets["OPEN_API_KEY"]
 llm = OpenAI(model_name="gpt-3.5-turbo")
 COHERE_API_KEY = "5oLCAMpFcKifdONaAsTwCC2OO5laRKjIvzb62ftR"
 cohere = Cohere(cohere_api_key = COHERE_API_KEY ,model="command-xlarge-nightly")
