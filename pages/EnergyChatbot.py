@@ -21,7 +21,7 @@ hide_default_format = """
        </style>
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 llm = OpenAI(model_name="gpt-3.5-turbo")
 
 reader = PdfReader("pages\\61628_BK_EERE-EnergySavers_w150.pdf")
